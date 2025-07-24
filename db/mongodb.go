@@ -251,8 +251,19 @@ func (m *MongoDB) Search(ctx context.Context, q *Query) (string, error) {
 			}
 		}
 	}
-	if len(q.CNPF) > 0 {
-		f["qsa.cnpj_cpf_do_socio"] = bson.M{"$in": q.CNPF}
+	// Handle partner search - ensure CNPF and name are from the same partner
+	if len(q.CNPF) > 0 || q.NomeSocio != "" {
+		elemMatch := bson.M{}
+		if len(q.CNPF) > 0 {
+			elemMatch["cnpj_cpf_do_socio"] = bson.M{"$in": q.CNPF}
+		}
+		if q.NomeSocio != "" {
+			elemMatch["nome_socio"] = bson.M{"$regex": q.NomeSocio, "$options": "i"}
+		}
+		f["qsa"] = bson.M{"$elemMatch": elemMatch}
+	}
+	if len(q.SituacaoCadastral) > 0 {
+		f["descricao_situacao_cadastral"] = bson.M{"$in": q.SituacaoCadastral}
 	}
 	if q.Cursor != nil {
 		f["id"] = bson.M{"$gt": *q.Cursor}

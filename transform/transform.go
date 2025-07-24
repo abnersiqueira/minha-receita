@@ -29,6 +29,8 @@ var extraIdexes = [...]string{
 	"cnae_fiscal",
 	"cnaes_secundarios.codigo",
 	"qsa.cnpj_cpf_do_socio",
+	"descricao_situacao_cadastral",
+	"qsa.nome_socio",
 }
 
 type database interface {

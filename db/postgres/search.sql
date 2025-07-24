@@ -20,11 +20,26 @@ WHERE
     {{ end -}}
   )
   {{- end }}
-  {{ if and (or .Query.UF .Query.CNAEFiscal .Query.CNAE) .Query.CNPF }} AND {{ end }}
-  {{ if .Query.CNPF -}}
+  {{ if and (or .Query.UF .Query.CNAEFiscal .Query.CNAE) (or .Query.CNPF .Query.NomeSocio) }} AND {{ end }}
+  {{ if or .Query.CNPF .Query.NomeSocio -}}
   (
-    jsonb_path_query_array(json, '$.qsa[*].cnpj_cpf_do_socio') @> '[{{ range $i, $cnpf := .Query.CNPF }}{{ if $i }},{{ end }}"{{ $cnpf }}"{{ end }}]'
+    json -> 'qsa' IS NOT NULL AND 
+    jsonb_typeof(json -> 'qsa') = 'array' AND
+    EXISTS (
+      SELECT 1 FROM jsonb_array_elements(json -> 'qsa') AS socio
+      WHERE 1=1
+      {{ if .Query.CNPF -}}
+        AND socio ->> 'cnpj_cpf_do_socio' IN ({{ range $i, $cnpf := .Query.CNPF }}{{ if $i }},{{ end }}'{{ $cnpf }}'{{ end }})
+      {{- end }}
+      {{ if .Query.NomeSocio -}}
+        AND socio ->> 'nome_socio' ILIKE '%{{ .Query.NomeSocio }}%'
+      {{- end }}
+    )
   )
+  {{- end }}
+  {{ if and (or .Query.UF .Query.CNAEFiscal .Query.CNAE .Query.CNPF .Query.NomeSocio) .Query.SituacaoCadastral }} AND {{ end }}
+  {{ if .Query.SituacaoCadastral -}}
+  ({{ range $i, $sit := .Query.SituacaoCadastral }}{{ if $i }} OR {{ end }}json -> 'descricao_situacao_cadastral' = '"{{ $sit }}"'::jsonb{{ end }})
   {{- end }}
 ORDER BY {{ .CursorFieldName }}
 LIMIT {{ .Query.Limit }}

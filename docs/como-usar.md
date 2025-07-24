@@ -202,6 +202,8 @@ A busca paginada aceita um ou mais desses parâmetros na URL:
 | `cnae_fiscal` | Código do CNAE fiscal |
 | `cnae` | Busca o código tanto no CNAE fiscal como nos CNAES secundários |
 | `cnpf` | Busca por CPF ou CNPJ da pessoa no quadro societário |
+| `situacao` | Situação cadastral (ex: "ATIVA", "BAIXADA", "SUSPENSA") |
+| `nome_socio` | Nome do sócio (busca parcial, case-insensitive) |
 | `limit` | Número máximo de CNPJ por página (o máximo é 1.000) |
 | `cursor` | Valor a ser passado para requisitar a próxima página da busca |
 
@@ -220,6 +222,23 @@ O mesmo vale para `cnae` e `cnae_fiscal`.
 Não utilizar pontuação ou barras nesses valores.
 
 Para buscar por CPF, utilizar `*` como os três primeiros caracteres e como os dois últimos. Por exemplo, para buscar pelo CPF 123.456.789-01, utilizar `***456789**` — é assim que o CPF dos sócios aparece no banco de dados original.
+
+### Exemplos de busca combinada
+
+Buscar empresas ativas onde um sócio com CPF específico e nome começando com "MARIA":
+```
+GET /?cnpf=***456789**&situacao=ATIVA&nome_socio=MARIA&limit=10
+```
+
+Buscar empresas ativas em SP com sócio específico:
+```
+GET /?uf=SP&cnpf=***456789**&situacao=ATIVA&limit=20
+```
+
+Buscar por múltiplas situações cadastrais:
+```
+GET /?situacao=ATIVA,SUSPENSA&nome_socio=JOÃO&limit=50
+```
 
 ### Exemplo de JSON de resposta:
 

@@ -23,6 +23,7 @@ import (
 const (
 	cacheMaxAge = time.Hour * 24
 	timeout     = time.Minute * 3
+	searchTimeout = time.Minute * 5  // Timeout maior para buscas complexas
 )
 
 var cacheControl = fmt.Sprintf("max-age=%d", int(cacheMaxAge.Seconds()))
@@ -93,7 +94,12 @@ func (app *api) paginatedSearch(q *db.Query, w http.ResponseWriter, r *http.Requ
 	if txn != nil {
 		txn.AddAttribute("handler", "paginatedSearch")
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	// Use timeout maior para queries complexas com múltiplos filtros
+	queryTimeout := timeout
+	if len(q.CNPF) > 0 && q.NomeSocio != "" {
+		queryTimeout = searchTimeout
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), queryTimeout)
 	defer cancel()
 	s, err := app.db.Search(ctx, q)
 	if err == context.DeadlineExceeded {
