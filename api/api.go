@@ -135,7 +135,7 @@ func (app *api) companyHandler(w http.ResponseWriter, r *http.Request) {
 	if pth == "/" {
 		q := db.NewQuery(r.URL.Query())
 		if q == nil {
-			http.Redirect(w, r, "https://docs.minhareceita.org", http.StatusFound)
+			http.Redirect(w, r, "https://google.com.br", http.StatusFound)
 			return
 		}
 		app.paginatedSearch(q, w, r)

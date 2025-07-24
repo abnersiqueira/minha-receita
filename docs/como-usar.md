@@ -1,6 +1,6 @@
 # Como usar
 
-A API web tem apenas um _endpoints_ principal: `/<número do CNPJ>`. Nos exemplos a seguir, substituta `https://minhareceita.org` por `http://0.0.0.0:8000` caso esteja rodando o servidor localmente.
+A API web tem apenas um _endpoints_ principal: `/<número do CNPJ>`. Nos exemplos a seguir, substituta por `http://0.0.0.0:8000` caso esteja rodando o servidor localmente.
 
 | Caminho da URL | Tipo de requisição | Código esperado na resposta | Conteúdo esperado na resposta |
 |---|---|---|---|
@@ -17,7 +17,7 @@ A API web tem apenas um _endpoints_ principal: `/<número do CNPJ>`. Nos exemplo
 ## Exemplo de requisição usando o `curl`
 
 ```console
-$ curl https://minhareceita.org/33683111000280
+$ curl http://103.195.100.160:8000/33683111000280
 ```
 
 ## Exemplo de resposta válida

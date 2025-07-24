@@ -15,23 +15,24 @@ O código desse repositório faz esses dados ainda mais acessíveis:
 
 ## Acessando a API pública
 
-Disponibilizo essa aplicação para que cada um rode na sua própria infraestrutura, e também existe uma API web no ar em [`https://minhareceita.org/`](https://minhareceita.org) (confira o [monitor de status](https://stats.uptimerobot.com/tqpD6AQZqI)).
+Disponibilizo essa aplicação para que cada um rode na sua própria infraestrutura, e também existe uma API web no ar em [`http://103.195.100.160:8000/`](http://103.195.100.160:8000)
+ <!-- (confira o [monitor de status](https://stats.uptimerobot.com/tqpD6AQZqI)). -->
 
-Para fazer uma consulta usando a API web, acrescente o CNPJ a ser consultado ao final da URL. Por exemplo: `https://minhareceita.org/33.683.111/0002-80`. Para mais detalhes sobre como utilizar a API, confira a seção [Como usar](como-usar.md).
+Para fazer uma consulta usando a API web, acrescente o CNPJ a ser consultado ao final da URL. Por exemplo: `http://103.195.100.160:8000/33.683.111/0002-80`. Para mais detalhes sobre como utilizar a API, confira a seção [Como usar](como-usar.md).
 
-### Limites e disponibilidade
+<!-- ### Limites e disponibilidade
 
-A API web não tem nenhuma [garantia de nível de serviço](https://pt.wikipedia.org/wiki/Acordo_de_n%C3%ADvel_de_servi%C3%A7o) e a única forma de aumentar sua disponibilidade e diminuir o tempo de resposta é com [contribuições mensais](https://github.com/sponsors/cuducos) ou contribuições pontuais via Pix (`d6ede813-6621-4df4-9a93-8d0108fd9b6a`) ou Bitcoin (`13WCAR21g1LGqzzn6WTNV5g7QdN1J35BDk`).
+A API web não tem nenhuma [garantia de nível de serviço](https://pt.wikipedia.org/wiki/Acordo_de_n%C3%ADvel_de_servi%C3%A7o) e a única forma de aumentar sua disponibilidade e diminuir o tempo de resposta é com [contribuições mensais](https://github.com/sponsors/cuducos) ou contribuições pontuais via Pix (`d6ede813-6621-4df4-9a93-8d0108fd9b6a`) ou Bitcoin (`13WCAR21g1LGqzzn6WTNV5g7QdN1J35BDk`). -->
 
-## Contato
+<!-- ## Contato
 
-Para conversar sobre o projeto, prefira [abrir uma _issue_ no GitHub](https://github.com/cuducos/minha-receita/issues/new) ou iniciar uma conversa pública [Mastodon](https://mastodon.social/@cuducos) ou [Bluesky](https://bsky.app/profile/cuducos.me). **Não responderei** mensagens deixadas como _DM_ ou emails em minhas contas pessoais:
+Para conversar sobre o projeto, prefira [abrir uma _issue_ no GitHub](https://github.com/cuducos/minha-receita/issues/new) ou iniciar uma conversa pública [Mastodon](https://mastodon.social/@cuducos) ou [Bluesky](https://bsky.app/profile/cuducos.me). **Não responderei** mensagens deixadas como _DM_ ou emails em minhas contas pessoais: -->
 
-* Esse é um projeto de dados abertos e código aberto, não existe motivo para conversas privadas relacionadas ao projeto
+<!-- * Esse é um projeto de dados abertos e código aberto, não existe motivo para conversas privadas relacionadas ao projeto
 * Sua dúvida pode ser a de outra pessoa, e ter a nossa conversa em umas dessas três plataformas faz com que outras pessoas (que talvez tenham a mesma dúvida que você, ou dúvidas semelhantes) possam encontrar a nossa conversa
 * Minha resposta pode ser incompleta ou mesmo errada, e ter essas conversas em ambiente aberto possibilitam que outras pessoas te ajudem, me corrijam e complementem o conteúdo
-* Por fim, pode ser que tua dúvida já tenha sido respondida e, caso você não tenha encontrado, eu posso te enviar um _link_ e você se junta a uma conversa que já está em andamento sobre o mesmo tema
-
+* Por fim, pode ser que tua dúvida já tenha sido respondida e, caso você não tenha encontrado, eu posso te enviar um _link_ e você se junta a uma conversa que já está em andamento sobre o mesmo tema -->
+<!--
 ## Muito obrigada
 
-Ao [Turicas](https://twitter.com/turicas) por todo ativismo, mais o trabalho de coleta quando o formato dos arquivos ainda não era em CSV. Muito desse projeto se deve a ele. Ao [Bruno](https://twitter.com/555112299jedi), sem o qual [nunca teríamos acesso a esses dados por menos de R$ 500 mil](https://medium.com/serenata/o-dia-que-a-receita-nos-mandou-pagar-r-500-mil-para-ter-dados-p%C3%BAblicos-8e18438f3076). E ao [Fireman](https://twitter.com/daniellfireman), pela mentoria em Go!
+Ao [Turicas](https://twitter.com/turicas) por todo ativismo, mais o trabalho de coleta quando o formato dos arquivos ainda não era em CSV. Muito desse projeto se deve a ele. Ao [Bruno](https://twitter.com/555112299jedi), sem o qual [nunca teríamos acesso a esses dados por menos de R$ 500 mil](https://medium.com/serenata/o-dia-que-a-receita-nos-mandou-pagar-r-500-mil-para-ter-dados-p%C3%BAblicos-8e18438f3076). E ao [Fireman](https://twitter.com/daniellfireman), pela mentoria em Go! -->

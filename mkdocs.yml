@@ -1,5 +1,5 @@
-site_name: Minha Receita
-repo_url: https://github.com/cuducos/minha-receita
+site_name: Apex Receita
+## repo_url: https://github.com/cuducos/minha-receita
 edit_uri: edit/main/docs/
 theme:
   language: pt
@@ -12,15 +12,15 @@ theme:
   features:
     - navigation.instant
     - toc.integrate
-  icon:
-    repo: fontawesome/brands/github
+  # icon:
+  #   repo: fontawesome/brands/github
 nav:
   - index.md
   - como-usar.md
-  - instalacao.md
-  - servidor.md
-  - faq.md
-  - sobre-os-dados.md
+  # - instalacao.md
+  # - servidor.md
+  # - faq.md
+  # - sobre-os-dados.md
 plugins:
   - search
   - minify:

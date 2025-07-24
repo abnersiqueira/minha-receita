@@ -12,7 +12,7 @@ services:
   postgres:
     image: postgres:16.1-bookworm
     ports:
-      - 5432:5432
+      - 45432:5432
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment: &credentials
@@ -20,34 +20,41 @@ services:
       POSTGRES_USER: minhareceita
       POSTGRES_DB: minhareceita
     healthcheck:
-      test: ["CMD-SHELL", "sh -c 'pg_isready -U $${POSTGRES_USER}'"]
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U $${POSTGRES_USER}'" ]
       interval: 10s
       timeout: 5s
       retries: 5
+  # postgres_test:
+  #   image: postgres:16.1-bookworm
+  #   ports:
+  #     - 5555:5432
+  #   environment: *credentials
+  #   command: [ "postgres", "-c", "log_statement=all" ]
+  # mongo:
+  #   image: mongo:8.0-noble
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: minhareceita
+  #     MONGO_INITDB_ROOT_PASSWORD: minhareceita
+  #   volumes:
+  #     - ./data/mongodb:/data/db
+  #   ports:
+  #     - "27017:27017"
 
-  postgres_test:
-    image: postgres:16.1-bookworm
+  # mongo_test:
+  #   image: mongo:8.0-noble
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: minhareceita
+  #     MONGO_INITDB_ROOT_PASSWORD: minhareceita
+  #   ports:
+  #     - "27117:27017"
+
+  docs:
+    image: squidfunk/mkdocs-material
+    command: serve --dev-addr 0.0.0.0:8001
     ports:
-      - 5555:5432
-    environment: *credentials
-    command: ["postgres", "-c", "log_statement=all"]
-
-  mongo:
-    image: mongo:8.0-noble
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: minhareceita
-      MONGO_INITDB_ROOT_PASSWORD: minhareceita
+      - 8001:8001
     volumes:
-      - ./data/mongodb:/data/db
-    ports:
-      - "27017:27017"
-
-  mongo_test:
-    image: mongo:8.0-noble
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: minhareceita
-      MONGO_INITDB_ROOT_PASSWORD: minhareceita
-    ports:
-      - "27117:27017"
+      - .:/docs
+    working_dir: /docs
